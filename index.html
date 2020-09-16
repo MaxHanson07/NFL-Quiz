@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     <!-- Nav dispalying link to high scores page on left and time on right -->
     <nav class="nav">
         <a href="highscore.html">View Highscores</a>
-        <p id="time">Time Left: </p>
+        <p id="time">Time Left: 30</p>
     </nav>
 
     <!-- H1 with welcome -->
@@ -29,10 +30,15 @@
         <main class="col-md-8 box">
             <!-- Heading tag that displays welcome before game and questions during -->
             <h1 class="text-center header">Welcome</h1>
-            <p class="text-center body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita, distinctio
-                repellat architecto quis autem labore deleniti, consectetur aperiam laboriosam a eos possimus quibusdam,
-                sunt debitis explicabo suscipit nemo error! Dolorum.</p>
-            <button class="button">Start</button>
+            <div class="text-center body">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita,
+                    distinctio
+                    repellat architecto quis autem labore deleniti, consectetur aperiam laboriosam a eos possimus
+                    quibusdam,
+                    sunt debitis explicabo suscipit nemo error! Dolorum.</p>
+                <button id="start">Start</button>
+            </div>
+
         </main>
 
     </div>
@@ -42,6 +48,8 @@
     <!-- Time subtracted when question answered incorrectly -->
     <!-- Game ends when all questions are answered or when timer reaches 0 -->
     <!-- Option to save initials and score when game ends -->
+
+    <script src="script.js"></script>
 
 </body>
 
