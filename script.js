@@ -1,7 +1,9 @@
 // Create variables needed for clock
 // var timeEl = document.querySelector(".time");
-var secondsLeft = 2;
+var secondsLeft = 30;
 var gameOver = false;
+
+console.log(secondsLeft)
 
 // Timer that counts down from 30 seconds
 function countdownTimer() {
@@ -9,12 +11,12 @@ function countdownTimer() {
 
     var timerInterval = setInterval(function () {
         secondsLeft--;
-        document.querySelector(".time").textContent = "Time left: " + secondsLeft;
+
+        document.querySelector("#time").textContent = "Time left: " + secondsLeft;
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
             gameOver = true;
-            console.log(gameOver);
         }
 
     }, 1000);
@@ -25,22 +27,13 @@ function countdownTimer() {
 var startButton = document.getElementById("start");
 
 var header = document.querySelector(".header");
-var body = document.querySelector(".body");
+var body = document.querySelector(".paragraph-body");
 var button = document.querySelector("#button");
-
-var answer1 = document.createElement("button");
-var answer2 = document.createElement("button");
-var answer3 = document.createElement("button");
-var answer4 = document.createElement("button");
 
 startButton.addEventListener("click", function () {
     countdownTimer();
-    // askQuestion();
+    askQuestion();
 })
-
-
-
-
 
 // Variables that keep track of question number and score
 var questionNum = 1;
@@ -61,36 +54,56 @@ var questions = [
 // Asks user questions until all questions are answered or time runs out
 function askQuestion() {
     while ((element < questions.length) && (gameOver != true)) {
-        questionDisplay();
+
+        // Give each answer values to compare to array objects to determine which is correct
+        var answer1Val = "a";
+        var answer2Val = "b";
+        var answer3Val = "c";
+        var answer4Val = "d";
+
+        // Create new div to hold created buttons
+        var newDiv = $("<div>")
+        newDiv.attr("class", "answer-buttons")
+        $("#box").append(newDiv);
+
+        // Create buttons to display answer choices to user
+        var answer1 = $("<button>")
+        var answer2 = $("<button>")
+        var answer3 = $("<button>")
+        var answer4 = $("<button>")
+
+        // Changes header to display question number and the paragraph body to display question
+        header.textContent = "Question " + questionNum;
+        body.textContent = questions[element].q;
+
+        // Displays the possible answer texts within the buttons
+        answer1.textContent = questions[element].a;
+        answer2.textContent = questions[element].b;
+        answer3.textContent = questions[element].c;
+        answer4.textContent = questions[element].d;
+
+        // Appends the buttons to the created div to make them appear on webpage
+        $("#buttons").append(answer1);
+        $("#buttons").append(answer2);
+        $("#buttons").append(answer3);
+        $("#buttons").append(answer4);
+
+        console.log(answer1);
+
+        // Calls the function that determines if selected answer is correct or not
+        checkAnswer(answer1, answer1Val);
+        checkAnswer(answer2, answer2Val);
+        checkAnswer(answer3, answer3Val);
+        checkAnswer(answer4, answer4Val);
+
+       
     }
 }
 
-// Displays questions and answers
-function questionDisplay() {
-
-    header.textContent = "Question " + questionNum;
-    body.textContent = questions[element].q;
-    answer1.textContent = questions[element].a;
-    answer2.textContent = questions[element].b;
-    answer3.textContent = questions[element].c;
-    answer4.textContent = questions[element].d;
-
-    checkAnswer(answer1, a);
-    checkAnswer(answer2, b);
-    checkAnswer(answer3, c);
-    checkAnswer(answer4, d);
-
-    body.appendChild(answer1);
-    body.appendChild(answer2);
-    body.appendChild(answer3);
-    body.appendChild(answer4);
-
-}
-
-console.log(questions[element].a);
-
-
+// Determines if selected answer is correct. Adds one point to score if correct, subtracts 10 seconds if incorrect
+// Swaps out previous question and answers with next set in array
 function checkAnswer(selectedAnswer, value) {
+    // Adds a click function to each created answer button
     selectedAnswer.addEventListener("click", function () {
         if (questions[element].r === value) {
             score++;
