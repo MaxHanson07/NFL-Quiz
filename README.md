@@ -1,14 +1,18 @@
 # NFL-Quiz
-A short-timed quiz with questions based on the National Football League
+A short-timed quiz with questions based on the National Football League. The user will have 30 seconds to answer five questions testing their knowledge on the NFL.
 
 # Instructions
 
 User clicks "start quiz" button.
 
-The program will ask several questions about how long the user wants the password to be and what type of characters the user wants the password to consist of.
+A timer will begin to count down from 30 seconds and the first question and set of possible answers will appear. 
 
-These answers are validated to ensure that the password length is a number, the length is between 7 and 129 characters, and that the user chooses at least one type of character to build the password with.
+A new question will appear as each one is answered until the user answers all questions or time has run out.
 
-The program randomly selects the specified amount of characters from the desired character types and displays the user's password on the webpage. 
+The program then adds up their score and sends the user to the highscores page where they will have the opportunity to enter their initals and submit their score.
 
-The process will repeat with every click of the "generate password" button.
+The user can then return to the homepage and strive to improve upon their score.
+
+# Link to webpage
+
+https://maxhanson07.github.io/NFL-Quiz/index.html
