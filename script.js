@@ -47,8 +47,6 @@ var questionNum = 1;
 var element = 0;
 var score = 0;
 
-
-
 // The array of questions for the NFL quiz
 var questions = [
     { q: "Who is the oldest coach in the NFL? (As of 2020)", a: "Bill Belichick", b: "Pete Carrol", c: "Bruce Arians", d: "Todd Bowles", r: "b" },
@@ -116,37 +114,16 @@ function checkAnswer(selectedAnswer, value) {
 
         //TODO - Handle last question and show the high score screen
         if (element >= questions.length) {
-            handleEndGame() 
-            
+            handleEndGame()
+
         }
         else askQuestion()
     })
 }
 
+// Stores user's score so that the highscore page can access it
 function handleEndGame() {
     localStorage.setItem('temp-user-score', score)
 
     window.location.replace("highscore.html")
 }
-
-// Append buttons with additional answers
-
-// Set questions answer equal to a, b, c, or d to match corresponding button
-
-// Add click me's to each button that report true or false and display next question
-
-// Time displayed in top right
-
-// <!-- Question replaced with new question when answered -->
-
-// <!-- Time subtracted when question answered incorrectly -->
-
-// <!-- Game ends when all questions are answered or when timer reaches 0 -->
-
-// <!-- Option to save initials and score when game ends -->
-
-// Create array of questions
-
-// Cycle through array displaying new question
-
-// Need to create highscore js and local storage

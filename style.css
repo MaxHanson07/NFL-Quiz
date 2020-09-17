@@ -1,8 +1,10 @@
+/* Changes color of webpage and makes sure its behind all other classes */
 .body {
     background-color: beige;
     z-index: 900;
 }
 
+/* Seperates the link to highscore and the clock */
 .nav {
     display:flex;
     justify-content: space-between;
@@ -10,27 +12,26 @@
     margin-right: 10px;
 }
 
+/* Centers all content */
 .box {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-#time {
-    justify-content: right;
-}
-
+/* Changes header tag to red */
 .header {
     color: red;
 }
 
+/* Adds color to the start and submit buttons */
 .menu-button {
     background-color: blue;
     color: white;
     font-weight: bold;
 }
 
+/* Centers the answer buttons that appear once quiz has begun */
 #answer-buttons {
     text-align: center;
-
 }

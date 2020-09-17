@@ -19,7 +19,7 @@ $(".menu-button").on("click", function () {
 
     // Removes the temporary variable that brought user's score to highscore page from index.html
     localStorage.removeItem('temp-user-score');
-    
+
     // Pushes the user's score to the array and saves it to local storage
     highscores.push("<br>" + initials + " scored a " + userScore);
     localStorage.setItem('all-highscores', JSON.stringify(highscores))
@@ -27,26 +27,5 @@ $(".menu-button").on("click", function () {
     $("ul").append("<br>" + initials + " scored a " + userScore);
 
     console.log(highscores)
-
-
-    // // Removes lowest score from list once there are more than five
-    if (highscores.length > 5) {
-        var lowestScore = highscores[0];
-        var lowestLocation = 0;
-
-        for (let i = 0; i < highscores.length; i++) {
-
-            if (lowestScore > highscores[i]) {
-                lowestScore = highscores[i];
-                lowestLocation = i
-            }
-
-        }
-
-
-        highscores.splice(lowestLocation)
-
-    }
-
 
 })
