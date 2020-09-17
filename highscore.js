@@ -9,18 +9,16 @@ var highscores = [];
 
 // localStorage.setItem('all-highscores', JSON.stringify(highscores))
 var data = JSON.parse(localStorage.getItem('all-highscores'))
-
+highscores.push(data);
 
 $(".menu-button").on("click", function () {
     var initials = $("#user-initials").val();
 
     localStorage.removeItem('temp-user-score');
-
-    highscores.push(data);
+    
     highscores.push("<br>" + initials + " scored a " + userScore);
-    localStorage.setItem('all-highscores', JSON.stringify(data))
+    localStorage.setItem('all-highscores', JSON.stringify(highscores))
 
-    console.log
     // var data = JSON.parse(localStorage.getItem('all-highscores'))
     $("ul").append("<br>" + initials + " scored a " + userScore);
     
