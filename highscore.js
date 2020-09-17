@@ -22,8 +22,8 @@ $(".menu-button").on("click", function () {
     // var data = JSON.parse(localStorage.getItem('all-highscores'))
     $("ul").append("<br>" + initials + " scored a " + userScore);
     
-    for (let i = 0; i < data.length; i++) {
-        $("ul").append(data[i]);
+    for (let i = 0; i < highscores.length; i++) {
+        $("ul").append(highscores[i]);
 
     }
 
