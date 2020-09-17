@@ -3,6 +3,13 @@
     z-index: 900;
 }
 
+.nav {
+    display:flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .box {
     justify-content: center;
     margin-left: auto;
@@ -21,4 +28,9 @@
     background-color: blue;
     color: white;
     font-weight: bold;
+}
+
+#answer-buttons {
+    text-align: center;
+
 }

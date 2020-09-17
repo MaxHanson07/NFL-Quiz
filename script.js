@@ -23,7 +23,7 @@ function countdownTimer() {
 
 }
 
-// <!-- Start Button that starts a timer and displays a question when clicked  -->
+// Start Button that starts a timer and displays a question when clicked
 var startButton = document.getElementById("start");
 
 var header = document.querySelector(".header");
@@ -32,6 +32,11 @@ var button = document.querySelector("#button");
 
 startButton.addEventListener("click", function () {
     countdownTimer();
+    // Create new div to hold created buttons
+    var newDiv = $("<div>")
+    newDiv.attr("id", "answer-buttons")
+    newDiv.attr("")
+    $(".box").append(newDiv);
     askQuestion();
 })
 
@@ -53,58 +58,53 @@ var questions = [
 
 // Asks user questions until all questions are answered or time runs out
 function askQuestion() {
-    while ((element < questions.length) && (gameOver != true)) {
 
-        // Give each answer values to compare to array objects to determine which is correct
-        var answer1Val = "a";
-        var answer2Val = "b";
-        var answer3Val = "c";
-        var answer4Val = "d";
+    // Give each answer values to compare to array objects to determine which is correct
+    var answer1Val = "a";
+    var answer2Val = "b";
+    var answer3Val = "c";
+    var answer4Val = "d";
 
-        // Create new div to hold created buttons
-        var newDiv = $("<div>")
-        newDiv.attr("class", "answer-buttons")
-        $("#box").append(newDiv);
 
-        // Create buttons to display answer choices to user
-        var answer1 = $("<button>")
-        var answer2 = $("<button>")
-        var answer3 = $("<button>")
-        var answer4 = $("<button>")
 
-        // Changes header to display question number and the paragraph body to display question
-        header.textContent = "Question " + questionNum;
-        body.textContent = questions[element].q;
+    // Create buttons to display answer choices to user
+    var answer1 = $("<button>")
+    var answer2 = $("<button>")
+    var answer3 = $("<button>")
+    var answer4 = $("<button>")
 
-        // Displays the possible answer texts within the buttons
-        answer1.textContent = questions[element].a;
-        answer2.textContent = questions[element].b;
-        answer3.textContent = questions[element].c;
-        answer4.textContent = questions[element].d;
+    // Changes header to display question number and the paragraph body to display question
+    header.textContent = "Question " + questionNum;
+    body.textContent = questions[element].q;
 
-        // Appends the buttons to the created div to make them appear on webpage
-        $("#buttons").append(answer1);
-        $("#buttons").append(answer2);
-        $("#buttons").append(answer3);
-        $("#buttons").append(answer4);
+    // Displays the possible answer texts within the buttons
+    answer1.html(questions[element].a)
+    answer2.html(questions[element].b)
+    answer3.html(questions[element].c)
+    answer4.html(questions[element].d)
 
-        console.log(answer1);
+    // Appends the buttons to the created div to make them appear on webpage
+    $("#answer-buttons").empty()
+    $("#answer-buttons").append(answer1);
+    $("#answer-buttons").append(answer2);
+    $("#answer-buttons").append(answer3);
+    $("#answer-buttons").append(answer4);
 
-        // Calls the function that determines if selected answer is correct or not
-        checkAnswer(answer1, answer1Val);
-        checkAnswer(answer2, answer2Val);
-        checkAnswer(answer3, answer3Val);
-        checkAnswer(answer4, answer4Val);
+    console.log(answer1);
 
-       
-    }
+    // Calls the function that determines if selected answer is correct or not
+    checkAnswer(answer1, answer1Val);
+    checkAnswer(answer2, answer2Val);
+    checkAnswer(answer3, answer3Val);
+    checkAnswer(answer4, answer4Val);
+    
 }
 
 // Determines if selected answer is correct. Adds one point to score if correct, subtracts 10 seconds if incorrect
 // Swaps out previous question and answers with next set in array
 function checkAnswer(selectedAnswer, value) {
     // Adds a click function to each created answer button
-    selectedAnswer.addEventListener("click", function () {
+    selectedAnswer.on("click", function () {
         if (questions[element].r === value) {
             score++;
         }
@@ -113,6 +113,16 @@ function checkAnswer(selectedAnswer, value) {
         }
         questionNum++;
         element++;
+
+        //TODO - Handle last question and show the high score screen
+        if (element >= questions.length) {
+            // handleEndGame()
+
+            localStorage.setItem('temp-user-score', score)
+
+            window.location.replace("highscore.html")
+        }
+        else askQuestion()
     })
 }
 
