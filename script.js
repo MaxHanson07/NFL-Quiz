@@ -51,11 +51,11 @@ var score = 0;
 
 // The array of questions for the NFL quiz
 var questions = [
-    { q: "The sky is blue.", a: "t", b: "jo", c: "jo", d: "jo", r: "b" },
-    { q: "There are 365 days in a year.", a: "t", b: "jo", c: "jo", d: "jo", r: "c" },
-    { q: "There are 42 ounces in a pound.", a: "t", b: "jo", c: "jo", d: "jo", r: "b" },
-    { q: "The Declaration of Independence was created in 1745.", a: "t", b: "jo", c: "jo", d: "jo", r: "a" },
-    { q: "Bananas are vegetables.", a: "t", b: "jo", c: "jo", d: "jo", r: "c" }
+    { q: "Who is the oldest coach in the NFL? (As of 2020)", a: "Bill Belichick", b: "Pete Carrol", c: "Bruce Arians", d: "Todd Bowles", r: "b" },
+    { q: "How many Super Bowls has Tom Brady won?", a: "4", b: "5", c: "6", d: "7", r: "c" },
+    { q: "What year was the NFL formed?", a: "1900", b: "1920", c: "1930", d: "1890", r: "b" },
+    { q: "Which team won the Super Bowl in 2020?", a: "Kansas City Chiefs", b: "Baltimore Ravens", c: "San Francisco 49ers", d: "Seattle Seahaks", r: "a" },
+    { q: "How many games does an NFL team play in the regular season? (Excludes playoffs and preseason)", a: "10", b: "13", c: "16", d: "17", r: "c" }
 ];
 
 // Asks user questions until all questions are answered or time runs out
