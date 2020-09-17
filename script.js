@@ -17,6 +17,7 @@ function countdownTimer() {
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
             gameOver = true;
+            handleEndGame()
         }
 
     }, 1000);
@@ -42,9 +43,10 @@ startButton.addEventListener("click", function () {
 
 // Variables that keep track of question number and score
 var questionNum = 1;
+// Variable used for iterating over array
 var element = 0;
 var score = 0;
-// Variable used for iterating over array
+
 
 
 // The array of questions for the NFL quiz
@@ -64,8 +66,6 @@ function askQuestion() {
     var answer2Val = "b";
     var answer3Val = "c";
     var answer4Val = "d";
-
-
 
     // Create buttons to display answer choices to user
     var answer1 = $("<button>")
@@ -97,7 +97,7 @@ function askQuestion() {
     checkAnswer(answer2, answer2Val);
     checkAnswer(answer3, answer3Val);
     checkAnswer(answer4, answer4Val);
-    
+
 }
 
 // Determines if selected answer is correct. Adds one point to score if correct, subtracts 10 seconds if incorrect
@@ -116,14 +116,17 @@ function checkAnswer(selectedAnswer, value) {
 
         //TODO - Handle last question and show the high score screen
         if (element >= questions.length) {
-            // handleEndGame()
-
-            localStorage.setItem('temp-user-score', score)
-
-            window.location.replace("highscore.html")
+            handleEndGame() 
+            
         }
         else askQuestion()
     })
+}
+
+function handleEndGame() {
+    localStorage.setItem('temp-user-score', score)
+
+    window.location.replace("highscore.html")
 }
 
 // Append buttons with additional answers
